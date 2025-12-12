@@ -1,26 +1,17 @@
-function calculate(operation) {
-    const number1 = parseFloat(document.getElementById('num1').value);
-    const number2 = parseFloat(document.getElementById('num2').value);
-    const resultElement = document.getElementById('result');
+function replaceWord() {
+    const sentence = document.getElementById("sentence").value;
+    const target = document.getElementById("target").value;
+    const replacement = document.getElementById("replacement").value;
+    const resultContainer = document.getElementById("result-container");
+    const resultText = document.getElementById("result-text");
 
-    if (isNaN(number1) || isNaN(number2)) {
-        resultElement.innerText = "Please enter valid numbers!";
-        resultElement.style.color = "red";
+    if (sentence === "" || target === "") {
+        alert("Please enter a sentence and a word to find.");
         return;
     }
 
-    let calculatedValue = 0;
+    const newSentence = sentence.replace(target, replacement);
 
-    if (operation === '+') {
-        calculatedValue = number1 + number2;
-    } else if (operation === '-') {
-        calculatedValue = number1 - number2;
-    } else if (operation === '*') {
-        calculatedValue = number1 * number2;
-    } else if (operation === '/') {
-        calculatedValue = number1 / number2;
-    }
-
-    resultElement.style.color = "black";
-    resultElement.innerText = calculatedValue;
+    resultText.innerText = newSentence;
+    resultContainer.style.display = "block";
 }
